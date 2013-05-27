@@ -1,0 +1,16 @@
+{
+    "name": "kzykhys/console-service-provider",
+    "description": "Provides Symfony/Console to Silex application",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kazuyuki Hayashi",
+            "email": "hayashi@valnur.net"
+        }
+    ],
+    "require": {
+        "silex/silex": "1.0.*@dev",
+        "symfony/console": ">=2.3,<2.4-dev"
+    },
+    "minimum-stability": "dev"
+}
