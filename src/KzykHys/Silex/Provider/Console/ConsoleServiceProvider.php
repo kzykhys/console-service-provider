@@ -2,6 +2,7 @@
 
 namespace KzykHys\Silex\Provider\Console;
 
+use KzykHys\Symfony\Console\Helper\SilexHelper;
 use Silex\Application;
 use Silex\ServiceProviderInterface;
 
@@ -29,6 +30,7 @@ class ConsoleServiceProvider implements ServiceProviderInterface
 
         $app['console'] = $app->share(function (Application $app) {
             $console = new \Symfony\Component\Console\Application($app['project.name'], $app['project.version']);
+            $console->getHelperSet()->set(new SilexHelper($app));
             $console->addCommands($app['console.commands']);
 
             return $console;
