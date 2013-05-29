@@ -16,7 +16,7 @@ Parameters
 Services
 --------
 
-* **console**: instance of `Symfony/Console/Application`
+* **console**: instance of `Symfony\Component\Console\Application`
 
 Usage
 -----
