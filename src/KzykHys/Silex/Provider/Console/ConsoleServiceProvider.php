@@ -24,12 +24,20 @@ class ConsoleServiceProvider implements ServiceProviderInterface
      */
     public function register(Application $app)
     {
+        $app['console.options'] = $app->share(function () {
+            return array(
+                'name'    => 'Silex Application',
+                'version' => Application::VERSION
+            );
+        });
+
         $app['console.commands'] = $app->share(function () {
             return array();
         });
 
         $app['console'] = $app->share(function (Application $app) {
-            $console = new \Symfony\Component\Console\Application($app['project.name'], $app['project.version']);
+            $options = $app['console.options'];
+            $console = new \Symfony\Component\Console\Application($options['name'], $options['version']);
             $console->getHelperSet()->set(new SilexHelper($app));
             $console->addCommands($app['console.commands']);
 
